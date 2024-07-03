@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
-    private final Environment environment;
     private final BookRepository bookRepository;
     private final CambioProxy cambioProxy;
 
@@ -17,7 +16,6 @@ public class BookService {
             Environment environment,
             BookRepository bookRepository,
             CambioProxy cambioProxy) {
-        this.environment = environment;
         this.bookRepository = bookRepository;
         this.cambioProxy = cambioProxy;
     }
