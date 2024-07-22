@@ -3,7 +3,6 @@ package br.com.microservices.bookservice.service;
 import br.com.microservices.bookservice.model.Book;
 import br.com.microservices.bookservice.proxy.CambioProxy;
 import br.com.microservices.bookservice.repository.BookRepository;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +12,6 @@ public class BookService {
     private final CambioProxy cambioProxy;
 
     public BookService(
-            Environment environment,
             BookRepository bookRepository,
             CambioProxy cambioProxy) {
         this.bookRepository = bookRepository;

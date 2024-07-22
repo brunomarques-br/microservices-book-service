@@ -2,7 +2,6 @@ package br.com.microservices.bookservice.controller;
 
 import br.com.microservices.bookservice.model.Book;
 import br.com.microservices.bookservice.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
