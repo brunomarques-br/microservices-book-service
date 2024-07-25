@@ -1,5 +1,6 @@
 package br.com.microservices.bookservice.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,10 @@ public class FooBarController {
     private final Logger logger = LoggerFactory.getLogger(FooBarController.class);
 
     @GetMapping("/foo-bar")
-    @Retry(name = "foo-bar", fallbackMethod = "fallbackMethod")
+    //@Retry(name = "foo-bar", fallbackMethod = "fallbackMethod")
+
+    // fallback method is called when the circuit is open
+    @CircuitBreaker(name = "default", fallbackMethod = "fallbackMethod")
     public String hello() {
         logger.info("Request received in FooBarController");
         var response = new RestTemplate()
@@ -25,7 +29,7 @@ public class FooBarController {
     }
 
     public String fallbackMethod(Exception e) {
-        return "Fallback method called due to exception: " + e.getMessage();
+        return "Fallback method called due to exception";
     }
 
 }
